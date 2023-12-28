@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         Scanner scanner = new Scanner(System.in);
-        int ex = 3;
+        int ex = 7;
 
         switch (ex) {
             case 1:
@@ -61,15 +61,55 @@ public class Main {
                 break;
             case 4:
                 //Exercício 4
+                int ex4_n1, ex4_n2;
+                double ex4_resultado;
+                System.out.printf("Insira quantos pares de números serão lidos: ");
+                int ex4_quantParNum = scanner.nextInt();
+                for (int i = 0; i < ex4_quantParNum; i++) {
+                    System.out.printf("(Par #%d) Primeiro número: ", i+1);
+                    ex4_n1 = scanner.nextInt();
+                    System.out.printf("(Par #%d) Segundo número: ", i+1);
+                    ex4_n2 = scanner.nextInt();
+                    if (ex4_n2 == 0) {
+                        System.out.println("Divisão impossível! \n");
+                    } else {
+                        ex4_resultado = (double) ex4_n1 / ex4_n2;
+                        System.out.printf("%d ÷ %d = %.1f %n%n", ex4_n1, ex4_n2, ex4_resultado);
+                    }
+                }
                 break;
             case 5:
                 //Exercício 5
+                System.out.print("Insira um valor inteiro: ");
+                int ex5_num = scanner.nextInt();
+                int ex5_fatorial = ex5_num;
+                if (ex5_num == 0) {
+                    ex5_fatorial = 1;
+                } else {
+                    for (int i = ex5_num - 1; i > 0; i--) {
+                        ex5_fatorial *= i;
+                    }
+                }
+                System.out.printf("Fatorial: %d", ex5_fatorial);
                 break;
             case 6:
                 //Exercício 6
+                System.out.print("Insira um número inteiro: ");
+                int ex6_num = scanner.nextInt();
+                for (int i = 1; i <= ex6_num; i++) {
+                    if (ex6_num % i == 0) {
+                        System.out.println(i);
+                    }
+                }
                 break;
             case 7:
                 //Exercício 7
+                System.out.print("Insira um número positivo: ");
+                int ex7_num = scanner.nextInt();
+
+                for (int i = 0; i < ex7_num; i++) {
+                    System.out.printf("%d %d %d %n", i+1, (int)Math.pow(i+1,2), (int)Math.pow(i+1,3));
+                }
                 break;
             default:
                 System.out.println("Exercício Inválido");
