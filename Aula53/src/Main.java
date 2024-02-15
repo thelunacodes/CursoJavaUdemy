@@ -32,20 +32,18 @@ public class Main {
         }
         System.out.print("\nInsira o id do funcionário que receberá o aumento: ");
         int idAumento = sc.nextInt();
-        if (idExiste(funcionarios, idAumento)) {
+        Funcionario funcAumento = funcionarios.stream().filter(x -> x.getId() == idAumento).findFirst().orElse(null);
+
+        if (funcAumento != null) {
             System.out.print("Insira a porcentagem do aumento de salário: ");
             double porcAumento = sc.nextDouble();
-            for (Funcionario f : funcionarios) {
-                if (f.getId() == idAumento) {
-                    f.aumentoSalario(porcAumento);
-                }
-            }
-            System.out.println("\nLista de Funcionários: ");
-            for (Funcionario f : funcionarios) {
-                System.out.printf("%d, %s, R$ %.2f %n", f.getId(), f.getNome(), f.getSalario());
-            }
+            funcAumento.aumentoSalario(porcAumento);
         } else {
             System.out.println("Id inválido.");
+        }
+        System.out.println("\nLista de funcionários:");
+        for (Funcionario f : funcionarios) {
+            System.out.println(f.toString());
         }
         sc.close();
     }

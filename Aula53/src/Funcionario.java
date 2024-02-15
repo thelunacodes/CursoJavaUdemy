@@ -32,4 +32,9 @@ public class Funcionario {
     public void aumentoSalario(double perc) {
         salario += (salario * perc / 100);
     }
+
+    public String toString() {
+        return String.format("%d, %s, R$ %.2f", getId(), getNome(), getSalario());
+    }
+
 }
