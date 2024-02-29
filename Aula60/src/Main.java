@@ -1,6 +1,8 @@
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +22,28 @@ public class Main {
         LocalDate nextMonthLocalDate = d1.plusMonths(1);
         System.out.println(nextMonthLocalDate);
 
-        LocalDate nextYearLocalDate
+        LocalDate nextYearLocalDate = d1.plusYears(3);
+        System.out.println(nextYearLocalDate);
+
+        LocalDate pastYearLocalDate = d1.minusYears(3);
+        System.out.println(pastYearLocalDate);
+
+        Instant pastWeekInstant = d3.minus(7, ChronoUnit.DAYS);
+        System.out.println(pastWeekInstant);
+
+        Instant nextWeekInstant = d3.plus(7, ChronoUnit.DAYS);
+        System.out.println(nextWeekInstant);
+
+        Duration t1 = Duration.between(d2, d2.plusDays(40));
+        System.out.println(t1.toHours());
+
+        Duration t2 = Duration.between(d2, pastWeekLocalDate.atTime(12,34));
+        System.out.println(t2.toDays());
+
+        Duration t3 = Duration.between(d2, pastWeekLocalDate.atStartOfDay()); //00:00
+        System.out.println(t3.toDays());
+
+        Duration t4 = Duration.between(pastWeekInstant, d3);
+        System.out.println(t4.toHours());
     }
 }
